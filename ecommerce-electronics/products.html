@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - TechTrove</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .products-container {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            padding: 40px 0;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .pagination a {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            border-radius: 4px;
+            background-color: var(--white);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .pagination a:hover, .pagination a.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .sort-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .sort-select {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .view-options {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .view-btn {
+            background: none;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .view-btn.active, .view-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-color: var(--primary-color);
+        }
+        
+        .newsletter {
+            background-color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter-form button {
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">TechTrove</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <h1 class="section-title">All Products</h1>
+            
+            <div class="products-container">
+                <!-- Filters Sidebar -->
+                <div class="filters">
+                    <h3>Filters</h3>
+                    
+                    <div class="filter-group">
+                        <h4 class="filter-title">Price Range</h4>
+                        <div class="price-range">
+                            <input type="number" placeholder="Min" class="price-input">
+                            <input type="number" placeholder="Max" class="price-input">
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4 class="filter-title">Categories</h4>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Smartphones
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Laptops
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Audio
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Wearables
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Accessories
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Smart Home
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4 class="filter-title">Brands</h4>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Apple
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Samsung
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Sony
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Google
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> Dell
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> HP
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <h4 class="filter-title">Rating</h4>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> 
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> 
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> 
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> 
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" checked> 
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn">Apply Filters</button>
+                </div>
+                
+                <!-- Products Grid -->
+                <div class="products-content">
+                    <div class="sort-options">
+                        <div>
+                            <span>Showing 1-12 of 36 products</span>
+                        </div>
+                        <div class="sort-controls">
+                            <select class="sort-select">
+                                <option>Sort by: Featured</option>
+                                <option>Price: Low to High</option>
+                                <option>Price: High to Low</option>
+                                <option>Customer Rating</option>
+                                <option>Newest First</option>
+                            </select>
+                            <div class="view-options">
+                                <button class="view-btn active"><i class="fas fa-th"></i></button>
+                                <button class="view-btn"><i class="fas fa-list"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="products-grid">
+                        <!-- Product 1 -->
+                        <div class="product-card">
+                            <img src="images/product1.jpg" alt="Smartphone" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Premium Smartphone</h3>
+                                <p class="product-price">$899.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 2 -->
+                        <div class="product-card">
+                            <img src="images/product2.jpg" alt="Laptop" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Ultra-Thin Laptop</h3>
+                                <p class="product-price">$1299.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 3 -->
+                        <div class="product-card">
+                            <img src="images/product3.jpg" alt="Wireless Headphones" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Wireless Headphones</h3>
+                                <p class="product-price">$249.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 4 -->
+                        <div class="product-card">
+                            <img src="images/product4.jpg" alt="Smart Watch" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Smart Watch</h3>
+                                <p class="product-price">$199.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 5 -->
+                        <div class="product-card">
+                            <img src="images/product5.jpg" alt="Wireless Earbuds" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Wireless Earbuds</h3>
+                                <p class="product-price">$149.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 6 -->
+                        <div class="product-card">
+                            <img src="images/product6.jpg" alt="Gaming Console" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Gaming Console</h3>
+                                <p class="product-price">$499.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 7 -->
+                        <div class="product-card">
+                            <img src="images/product7.jpg" alt="Tablet" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Tablet Pro</h3>
+                                <p class="product-price">$799.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 8 -->
+                        <div class="product-card">
+                            <img src="images/product8.jpg" alt="Bluetooth Speaker" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Bluetooth Speaker</h3>
+                                <p class="product-price">$129.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 9 -->
+                        <div class="product-card">
+                            <img src="images/product9.jpg" alt="Camera" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Digital Camera</h3>
+                                <p class="product-price">$699.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 10 -->
+                        <div class="product-card">
+                            <img src="images/product10.jpg" alt="Smart TV" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">4K Smart TV</h3>
+                                <p class="product-price">$999.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 11 -->
+                        <div class="product-card">
+                            <img src="images/product11.jpg" alt="Drone" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Drone with Camera</h3>
+                                <p class="product-price">$349.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 12 -->
+                        <div class="product-card">
+                            <img src="images/product12.jpg" alt="Gaming Laptop" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Gaming Laptop</h3>
+                                <p class="product-price">$1499.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+
+                        <!-- Product 13 -->
+                        <div class="product-card">
+                            <img src="images/product13.jpg" alt="Premium Smart Watch" class="product-img">
+                            <div class="product-info">
+                                <h3 class="product-title">Premium Smart Watch</h3>
+                                <p class="product-price">$249.99</p>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <a href="product-details.html" class="btn">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="section-title">Subscribe to Our Newsletter</h2>
+            <p>Get the latest updates on new products and special promotions!</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>TechTrove</h3>
+                    <p>Your one-stop shop for all things tech. We offer the latest gadgets and electronics at competitive prices.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Smartphones</a></li>
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Audio</a></li>
+                        <li><a href="#">Wearables</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> info@techtrove.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 TechTrove. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update cart count (for demo purposes)
+            const cartCount = localStorage.getItem('cartCount') || 0;
+            document.querySelector('.cart-count').textContent = cartCount;
+            
+            // Filter functionality (for demo purposes)
+            const applyFilterBtn = document.querySelector('.filters .btn');
+            if (applyFilterBtn) {
+                applyFilterBtn.addEventListener('click', function() {
+                    alert('Filters applied! (This is a demo)');
+                });
+            }
+            
+            // View options toggle
+            const viewBtns = document.querySelectorAll('.view-btn');
+            viewBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    viewBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // In a real application, you would change the layout here
+                    // For demo purposes, we'll just show an alert
+                    if (this.querySelector('.fa-list')) {
+                        alert('Switching to list view! (This is a demo)');
+                    } else {
+                        alert('Switching to grid view! (This is a demo)');
+                    }
+                });
+            });
+            
+            // Sort select functionality (for demo purposes)
+            const sortSelect = document.querySelector('.sort-select');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', function() {
+                    alert(`Sorting by: ${this.value} (This is a demo)`);
+                });
+            }
+            
+            // Newsletter form submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for subscribing to our newsletter!');
+                    this.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

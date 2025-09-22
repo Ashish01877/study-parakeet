@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - TechTrove</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .cart-page {
+            padding: 40px 0;
+        }
+        
+        .cart-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        
+        .cart-empty {
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .cart-empty i {
+            font-size: 60px;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+        
+        .cart-empty h2 {
+            margin-bottom: 20px;
+        }
+        
+        .cart-empty p {
+            margin-bottom: 30px;
+            color: var(--dark-gray);
+        }
+        
+        .promo-code {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .promo-code input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .promo-code button {
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .cart-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .continue-shopping {
+            background: none;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .continue-shopping:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        @media (max-width: 768px) {
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .cart-buttons .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header><button onclick="updateCartItemQuantity('Premium Smartphone', -1)">-</button>
+<button onclick="updateCartItemQuantity('Premium Smartphone', 1)">+</button>
+<button onclick="removeCartItem('Premium Smartphone')">Remove</button>
+
+
+
+
+        <div class="container header-container">
+            <a href="index.html" class="logo">TechTrove</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container" style="padding: 20px 0;">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> &gt; 
+            <span>Shopping Cart</span>
+        </div>
+    </div>
+
+    <!-- Cart Section -->
+    <section class="cart-page">
+        <div class="container">
+            <h1 class="section-title">Your Shopping Cart</h1>
+            
+            <!-- Cart with items (default view) -->
+            <div id="cart-with-items">
+                <div class="cart-container">
+                    <!-- Cart Items -->
+                    <div class="cart-items">
+                        <!-- Item 1 -->
+                        <div class="cart-item">
+                            <img src="images/product1.jpg" alt="Premium Smartphone" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <h3>Premium Smartphone</h3>
+                                <p>Color: Midnight Black</p>
+                                <p>Storage: 256GB</p>
+                            </div>
+                            <div class="cart-item-quantity">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn" onclick="updateCartItemQuantity(1, -1)">-</button>
+                                    <input type="number" value="1" min="1" class="quantity-input" id="item1-quantity" onchange="updateCartItemQuantity(1, 0)">
+                                    <button class="quantity-btn" onclick="updateCartItemQuantity(1, 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="cart-item-price">$899.99</div>
+                            <button class="remove-btn" onclick="removeCartItem(1)"><i class="fas fa-trash"></i></button>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="cart-item">
+                            <img src="images/product3.jpg" alt="Wireless Headphones" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <h3>Wireless Headphones</h3>
+                                <p>Color: Black</p>
+                            </div>
+                            <div class="cart-item-quantity">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn" onclick="updateCartItemQuantity(2, -1)">-</button>
+                                    <input type="number" value="1" min="1" class="quantity-input" id="item2-quantity" onchange="updateCartItemQuantity(2, 0)">
+                                    <button class="quantity-btn" onclick="updateCartItemQuantity(2, 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="cart-item-price">$249.99</div>
+                            <button class="remove-btn" onclick="removeCartItem(2)"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    
+                    <!-- Cart Summary -->
+                    <div class="cart-summary">
+                        <h3>Order Summary</h3>
+                        
+                        <div class="summary-row">
+                            <span>Subtotal (2 items)</span>
+                            <span>$1,149.98</span>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span>Free</span>
+                        </div>
+                        
+                        <div class="summary-row">
+                            <span>Tax</span>
+                            <span>$115.00</span>
+                        </div>
+                        
+                        <div class="summary-row summary-total">
+                            <span>Total</span>
+                            <span>$1,264.98</span>
+                        </div>
+                        
+                        <div class="promo-code">
+                            <input type="text" placeholder="Promo code">
+                            <button class="btn">Apply</button>
+                        </div>
+                        
+                        <a href="checkout.html" class="btn btn-accent" style="display: block; text-align: center; margin-top: 20px;">Proceed to Checkout</a>
+                    </div>
+                </div>
+                
+                <div class="cart-buttons">
+                    <a href="products.html" class="btn continue-shopping">Continue Shopping</a>
+                    <button class="btn" onclick="clearCart()">Clear Cart</button>
+                </div>
+            </div>
+            
+            <!-- Empty Cart (hidden by default) -->
+            <div id="empty-cart" style="display: none;">
+                <div class="cart-empty">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h2>Your cart is empty</h2>
+                    <p>Looks like you haven't added any products to your cart yet.</p>
+                    <a href="products.html" class="btn">Start Shopping</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- You May Also Like Section -->
+    <section class="related-products">
+        <div class="container">
+            <h2 class="section-title">You May Also Like</h2>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="images/product4.jpg" alt="Smart Watch" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Smart Watch</h3>
+                        <p class="product-price">$199.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="product-details.html" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="images/product5.jpg" alt="Wireless Earbuds" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Wireless Earbuds</h3>
+                        <p class="product-price">$149.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="product-details.html" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="images/product8.jpg" alt="Bluetooth Speaker" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Bluetooth Speaker</h3>
+                        <p class="product-price">$129.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="product-details.html" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <img src="images/product11.jpg" alt="Drone with Camera" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Drone with Camera</h3>
+                        <p class="product-price">$349.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="product-details.html" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>TechTrove</h3>
+                    <p>Your one-stop shop for all things tech. We offer the latest gadgets and electronics at competitive prices.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Smartphones</a></li>
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Audio</a></li>
+                        <li><a href="#">Wearables</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> info@techtrove.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 TechTrove. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update cart count from localStorage
+            updateCartCount();
+            
+            // Check if cart is empty (for demo purposes, we'll use localStorage)
+            const cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+            if (cartCount === 0) {
+                document.getElementById('cart-with-items').style.display = 'none';
+                document.getElementById('empty-cart').style.display = 'block';
+            }
+        });
+        
+        // Update cart count display
+        function updateCartCount() {
+            const cartCount = localStorage.getItem('cartCount') || 0;
+            document.querySelector('.cart-count').textContent = cartCount;
+        }
+        
+        // Update cart item quantity
+        function updateCartItemQuantity(itemId, change) {
+            const quantityInput = document.getElementById(`item${itemId}-quantity`);
+            let quantity = parseInt(quantityInput.value);
+            
+            if (change !== 0) {
+                quantity += change;
+                if (quantity < 1) quantity = 1;
+                quantityInput.value = quantity;
+            }
+            
+            // In a real application, you would update the cart in the backend
+            // For demo purposes, we'll just show an alert
+            alert(`Quantity updated for item #${itemId}! (This is a demo)`);
+            
+            // Update subtotal and total (this would be more complex in a real application)
+            // For demo purposes, we'll just reload the page
+            // location.reload();
+        }
+        
+        // Remove cart item
+        function removeCartItem(itemId) {
+            if (confirm('Are you sure you want to remove this item from your cart?')) {
+                // In a real application, you would remove the item from the cart in the backend
+                // For demo purposes, we'll just remove the element from the DOM
+                const cartItem = document.getElementById(`item${itemId}-quantity`).closest('.cart-item');
+                cartItem.remove();
+                
+                // Update cart count in localStorage (for demo purposes)
+                let cartCount = parseInt(localStorage.getItem('cartCount')) || 0;
+                cartCount = Math.max(0, cartCount - 1);
+                localStorage.setItem('cartCount', cartCount);
+                updateCartCount();
+                
+                // Check if cart is now empty
+                const cartItems = document.querySelectorAll('.cart-item');
+                if (cartItems.length === 0) {
+                    document.getElementById('cart-with-items').style.display = 'none';
+                    document.getElementById('empty-cart').style.display = 'block';
+                }
+                
+                alert(`Item #${itemId} removed from cart! (This is a demo)`);
+            }
+        }
+        
+        // Clear cart
+        function clearCart() {
+            if (confirm('Are you sure you want to clear your entire cart?')) {
+                // In a real application, you would clear the cart in the backend
+                // For demo purposes, we'll just update localStorage and show the empty cart
+                localStorage.setItem('cartCount', 0);
+                updateCartCount();
+                
+                document.getElementById('cart-with-items').style.display = 'none';
+                document.getElementById('empty-cart').style.display = 'block';
+                
+                alert('Cart cleared! (This is a demo)');
+            }
+        }
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>

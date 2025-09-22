@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Smartphone - TechTrove</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .product-tabs {
+            margin-top: 60px;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px 0;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .specs-table tr {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .specs-table th, .specs-table td {
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .specs-table th {
+            width: 30%;
+            font-weight: 600;
+        }
+        
+        .review {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        
+        .reviewer-name {
+            font-weight: 600;
+        }
+        
+        .review-date {
+            color: var(--dark-gray);
+        }
+        
+        .review-rating {
+            margin-bottom: 10px;
+        }
+        
+        .review-text {
+            line-height: 1.6;
+        }
+        
+        .related-products {
+            padding: 60px 0;
+        }
+        
+        .newsletter {
+            background-color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter-form button {
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">TechTrove</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="container" style="padding: 20px 0;">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> &gt; 
+            <a href="products.html">Products</a> &gt; 
+            <span>Premium Smartphone</span>
+        </div>
+    </div>
+
+    <!-- Product Details -->
+    <section class="container">
+        <div class="product-details">
+            <!-- Product Gallery -->
+            <div class="product-gallery">
+                <div class="thumbnail-container">
+                    <img src="images/product1.jpg" alt="Smartphone Front" class="thumbnail active" onclick="changeImage(this)">
+                    <img src="images/product1-2.jpg" alt="Smartphone Back" class="thumbnail" onclick="changeImage(this)">
+                    <img src="images/product1-3.jpg" alt="Smartphone Side" class="thumbnail" onclick="changeImage(this)">
+                    <img src="images/product1-4.jpg" alt="Smartphone Camera" class="thumbnail" onclick="changeImage(this)">
+                </div>
+                <div class="main-image-container">
+                    <img src="images/product1.jpg" alt="Premium Smartphone" class="main-image" id="mainImage">
+                </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info-detailed">
+                <h1>Premium Smartphone</h1>
+                <div class="product-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <span>(120 reviews)</span>
+                </div>
+                <p class="product-price">$899.99</p>
+                <p class="product-description">
+                    Experience the future of mobile technology with our Premium Smartphone. Featuring a stunning 6.7-inch AMOLED display, powerful octa-core processor, and an advanced camera system that captures professional-quality photos in any lighting condition. With 256GB of storage and 12GB of RAM, this device handles multitasking with ease.
+                </p>
+
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Availability:</span>
+                        <span class="meta-value">In Stock (15 units)</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Brand:</span>
+                        <span class="meta-value">TechTrove</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">SKU:</span>
+                        <span class="meta-value">SM-PRO-2025</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Shipping:</span>
+                        <span class="meta-value">Free shipping</span>
+                    </div>
+                </div>
+
+                <div class="product-options">
+                    <div class="option-group">
+                        <h4>Color:</h4>
+                        <div class="color-options">
+                            <button class="color-option active" style="background-color: #000;" title="Midnight Black"></button>
+                            <button class="color-option" style="background-color: #c0c0c0;" title="Silver"></button>
+                            <button class="color-option" style="background-color: #00008b;" title="Deep Blue"></button>
+                        </div>
+                    </div>
+                    <div class="option-group">
+                        <h4>Storage:</h4>
+                        <div class="storage-options">
+                            <button class="storage-option">128GB</button>
+                            <button class="storage-option active">256GB</button>
+                            <button class="storage-option">512GB</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quantity-selector">
+                    <button class="quantity-btn" onclick="decrementQuantity()">-</button>
+                    <input type="number" value="1" min="1" class="quantity-input" id="quantity">
+                    <button class="quantity-btn" onclick="incrementQuantity()">+</button>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn btn-accent" onclick="addToCart()">Add to Cart</button>
+                    <button class="btn">Buy Now</button>
+                    <button class="btn" style="background: none; color: var(--text-color);"><i class="far fa-heart"></i> Add to Wishlist</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Tabs -->
+        <div class="product-tabs">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="openTab(event, 'description')">Description</button>
+                <button class="tab-btn" onclick="openTab(event, 'specifications')">Specifications</button>
+                <button class="tab-btn" onclick="openTab(event, 'reviews')">Reviews (120)</button>
+            </div>
+
+            <!-- Description Tab -->
+            <div id="description" class="tab-content active">
+                <h3>Product Description</h3>
+                <p>The Premium Smartphone represents the pinnacle of mobile technology, combining cutting-edge features with elegant design. This flagship device is crafted for those who demand the best in performance, camera capabilities, and user experience.</p>
+                
+                <h4>Revolutionary Camera System</h4>
+                <p>Capture life's moments with unprecedented clarity through our quad-camera system. The 108MP main sensor delivers stunning detail, while the ultrawide, telephoto, and macro lenses provide versatility for any shooting scenario. Advanced night mode ensures beautiful photos even in low light conditions.</p>
+                
+                <h4>Immersive Display</h4>
+                <p>The 6.7-inch AMOLED display offers vibrant colors and deep blacks with a 120Hz refresh rate for ultra-smooth scrolling and gaming. HDR10+ support brings your content to life with enhanced contrast and brightness.</p>
+                
+                <h4>All-Day Battery Life</h4>
+                <p>The 5000mAh battery easily lasts a full day of heavy use, while 65W fast charging gets you from 0 to 60% in just 15 minutes. Wireless charging and reverse wireless charging add convenience to your daily routine.</p>
+                
+                <h4>Uncompromising Performance</h4>
+                <p>Powered by the latest octa-core processor and 12GB of RAM, this smartphone handles everything from intensive gaming to multitasking with ease. The advanced cooling system ensures sustained performance even during extended use.</p>
+            </div>
+
+            <!-- Specifications Tab -->
+            <div id="specifications" class="tab-content">
+                <h3>Technical Specifications</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>Display</th>
+                        <td>6.7-inch AMOLED, 120Hz, HDR10+, 1440 x 3200 pixels</td>
+                    </tr>
+                    <tr>
+                        <th>Processor</th>
+                        <td>Octa-core (1x3.0 GHz & 3x2.6 GHz & 4x2.0 GHz)</td>
+                    </tr>
+                    <tr>
+                        <th>RAM</th>
+                        <td>12GB LPDDR5</td>
+                    </tr>
+                    <tr>
+                        <th>Storage</th>
+                        <td>256GB UFS 3.1 (non-expandable)</td>
+                    </tr>
+                    <tr>
+                        <th>Main Camera</th>
+                        <td>108MP, f/1.8, OIS</td>
+                    </tr>
+                    <tr>
+                        <th>Ultra-Wide Camera</th>
+                        <td>12MP, f/2.2, 120° FOV</td>
+                    </tr>
+                    <tr>
+                        <th>Telephoto Camera</th>
+                        <td>10MP, f/2.4, 3x optical zoom</td>
+                    </tr>
+                    <tr>
+                        <th>Macro Camera</th>
+                        <td>5MP, f/2.4</td>
+                    </tr>
+                    <tr>
+                        <th>Front Camera</th>
+                        <td>32MP, f/2.2</td>
+                    </tr>
+                    <tr>
+                        <th>Battery</th>
+                        <td>5000mAh, 65W fast charging, 15W wireless charging</td>
+                    </tr>
+                    <tr>
+                        <th>Operating System</th>
+                        <td>Android 14</td>
+                    </tr>
+                    <tr>
+                        <th>Connectivity</th>
+                        <td>5G, Wi-Fi 6E, Bluetooth 5.2, NFC</td>
+                    </tr>
+                    <tr>
+                        <th>Biometrics</th>
+                        <td>In-display fingerprint sensor, Face recognition</td>
+                    </tr>
+                    <tr>
+                        <th>Water Resistance</th>
+                        <td>IP68 (water and dust resistant)</td>
+                    </tr>
+                    <tr>
+                        <th>Dimensions</th>
+                        <td>165.1 x 75.6 x 8.9 mm</td>
+                    </tr>
+                    <tr>
+                        <th>Weight</th>
+                        <td>198g</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Reviews Tab -->
+            <div id="reviews" class="tab-content">
+                <h3>Customer Reviews</h3>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <span class="reviewer-name">John D.</span>
+                        <span class="review-date">June 15, 2025</span>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">
+                        This smartphone exceeds all my expectations. The camera quality is outstanding, especially in low light. Battery life is impressive - I can go almost two days with moderate use. The display is vibrant and smooth with the 120Hz refresh rate. Definitely worth the investment!
+                    </p>
+                </div>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <span class="reviewer-name">Sarah M.</span>
+                        <span class="review-date">May 28, 2025</span>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                    <p class="review-text">
+                        Great phone overall. The camera system is versatile and produces beautiful photos. Performance is snappy and I haven't experienced any lag. My only complaint is that it's a bit heavier than I expected. Fast charging is a game-changer though!
+                    </p>
+                </div>
+                
+                <div class="review">
+                    <div class="review-header">
+                        <span class="reviewer-name">Michael T.</span>
+                        <span class="review-date">May 10, 2025</span>
+                    </div>
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">
+                        I've been using this phone for about a month now and I'm very impressed. The screen is gorgeous and the performance is top-notch. Camera quality is excellent, especially the night mode. Battery easily lasts all day even with heavy use. The only downside is the price, but you get what you pay for.
+                    </p>
+                </div>
+                
+                <a href="#" class="btn" style="margin-top: 20px;">View All Reviews</a>
+            </div>
+        </div>
+
+        <!-- Related Products -->
+        <div class="related-products">
+            <h2 class="section-title">You May Also Like</h2>
+            <div class="products-grid">
+                <!-- Related Product 1 -->
+                <div class="product-card">
+                    <img src="images/product2.jpg" alt="Ultra-Thin Laptop" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Ultra-Thin Laptop</h3>
+                        <p class="product-price">$1299.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="product-details.html" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Related Product 2 -->
+                <div class="product-card">
+                    <img src="images/product4.jpg" alt="Smart Watch" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Smart Watch</h3>
+                        <p class="product-price">$199.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="product-details.html" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Related Product 3 -->
+                <div class="product-card">
+                    <img src="images/product5.jpg" alt="Wireless Earbuds" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Wireless Earbuds</h3>
+                        <p class="product-price">$149.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <a href="product-details.html" class="btn">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Related Product 4 -->
+                <div class="product-card">
+                    <img src="images/product7.jpg" alt="Tablet Pro" class="product-img">
+                    <div class="product-info">
+                        <h3 class="product-title">Tablet Pro</h3>
+                        <p class="product-price">$799.99</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="product-details.html" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="section-title">Subscribe to Our Newsletter</h2>
+            <p>Get the latest updates on new products and special promotions!</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>TechTrove</h3>
+                    <p>Your one-stop shop for all things tech. We offer the latest gadgets and electronics at competitive prices.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Smartphones</a></li>
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Audio</a></li>
+                        <li><a href="#">Wearables</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Tech Street, City, Country</li>
+                        <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                        <li><i class="fas fa-envelope"></i> info@techtrove.com</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 TechTrove. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update cart count (for demo purposes)
+            const cartCount = localStorage.getItem('cartCount') || 0;
+            document.querySelector('.cart-count').textContent = cartCount;
+            
+            // Newsletter form submission
+            const newsletterForm = document.querySelector('.newsletter-form');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for subscribing to our newsletter!');
+                    this.reset();
+                });
+            }
+        });
+        
+        // Product image gallery
+        function changeImage(thumbnail) {
+            // Update main image
+            document.getElementById('mainImage').src = thumbnail.src;
+            
+            // Update active thumbnail
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            thumbnail.classList.add('active');
+        }
+        
+        // Quantity selector
+        function incrementQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
+        }
+        
+        function decrementQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            const currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+            }
+        }
+        
+        // Add to cart functionality
+       async function addToCart() {
+            const quantity = parseInt(document.getElementById('quantity').value);
+  const productId = "premium-smartphone"; // You'd get this from the product data
+  const productName = "Premium Smartphone";
+  const productPrice = 899.99;
+  const productImage = "images/product1.jpg";
+  
+  try {
+    // Check if user is logged in
+    const user = auth.currentUser;
+    
+    if (user) {
+      // User is logged in - add to Firestore cart
+      const cartItem = {
+        productId,
+        name: productName,
+        price: productPrice,
+        quantity,
+        image: productImage,
+        addedAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+      
+      await db.collection('users').doc(user.uid)
+        .collection('cart').doc(productId).set(cartItem, { merge: true });
+      
+      // Update local cart count
+      updateCartCount(user.uid);
+    } else {
+      // User is not logged in - use localStorage as fallback
+      let cart = JSON.parse(localStorage.getItem('cart')) || {};
+      cart[productId] = cart[productId] || { quantity: 0 };
+      cart[productId].quantity += quantity;
+      cart[productId].name = productName;
+      cart[productId].price = productPrice;
+      cart[productId].image = productImage;
+      
+      localStorage.setItem('cart', JSON.stringify(cart));
+      
+      // Update cart count display
+      const totalItems = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+      document.querySelector('.cart-count').textContent = totalItems;
+    }
+    
+    alert(`${quantity} ${productName}(s) added to your cart!`);
+  } catch (error) {
+    console.error("Error adding to cart:", error);
+    alert("There was an error adding the product to your cart.");
+  }
+        }
+        
+        // Tab functionality
+        function openTab(evt, tabName) {
+            // Hide all tab content
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // Remove active class from all tab buttons
+            const tabButtons = document.getElementsByClassName('tab-btn');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // Show the selected tab content and mark the button as active
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+        }
+        async function updateCartCount(userId) {
+  if (userId) {
+    // Get cart items from Firestore
+    const cartSnapshot = await db.collection('users').doc(userId)
+      .collection('cart').get();
+    
+    const totalItems = cartSnapshot.docs.reduce((sum, doc) => sum + doc.data().quantity, 0);
+    document.querySelector('.cart-count').textContent = totalItems;
+  } else {
+    // Fallback to localStorage
+    const cart = JSON.parse(localStorage.getItem('cart')) || {};
+    const totalItems = Object.values(cart).reduce((sum, item) => sum + item.quantity, 0);
+    document.querySelector('.cart-count').textContent = totalItems;
+  }
+}
+    </script>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
